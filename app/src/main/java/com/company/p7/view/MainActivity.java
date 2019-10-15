@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     TareasViewModel tareasViewModel;
     TareasAdapter tareasAdapter;
+    List<TareaDetalle> tareaDetalleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         tareasViewModel.getTareasDetalle().observe(this, new Observer<List<TareaDetalle>>() {
             @Override
             public void onChanged(List<TareaDetalle> queryResult) {
-                tareasAdapter.setList(queryResult);
+                tareaDetalleList = queryResult;
+                tareasAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -68,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class TareasAdapter extends RecyclerView.Adapter<TareaViewHolder>{
-
-        List<TareaDetalle> tareaDetalles;
-
         @NonNull
         @Override
         public TareaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull TareaViewHolder holder, int position) {
-            final TareaDetalle tareaDetalle = tareaDetalles.get(position);
+            final TareaDetalle tareaDetalle = tareaDetalleList.get(position);
 
             holder.descripcion.setText(tareaDetalle.descripcion);
             holder.fecha.setText(tareaDetalle.fecha);
@@ -95,12 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return tareaDetalles != null ? tareaDetalles.size() : 0;
-        }
-
-        public void setList(List<TareaDetalle> list){
-            tareaDetalles = list;
-            notifyDataSetChanged();
+            return tareaDetalleList != null ? tareaDetalleList.size() : 0;
         }
     }
 }

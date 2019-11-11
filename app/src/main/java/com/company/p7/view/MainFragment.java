@@ -43,7 +43,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tareasViewModel = ViewModelProviders.of(this).get(TareasViewModel.class);
+        tareasViewModel = ViewModelProviders.of(requireActivity()).get(TareasViewModel.class);
 
         view.findViewById(R.id.nuevaTarea).setOnClickListener(new View.OnClickListener() {
             @Override

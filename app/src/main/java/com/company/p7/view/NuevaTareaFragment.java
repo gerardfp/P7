@@ -51,7 +51,7 @@ public class NuevaTareaFragment extends Fragment {
         editTextDescripcion = view.findViewById(R.id.tarea_descripcion);
         spinnerPrioridades = view.findViewById(R.id.tarea_prioridad);
 
-        tareasViewModel = ViewModelProviders.of(this).get(TareasViewModel.class);
+        tareasViewModel = ViewModelProviders.of(requireActivity()).get(TareasViewModel.class);
 
         view.findViewById(R.id.crear_tarea).setOnClickListener(new View.OnClickListener() {
             @Override

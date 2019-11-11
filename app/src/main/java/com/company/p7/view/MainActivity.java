@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         RecyclerView recyclerView = findViewById(R.id.recycler_tareas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(tareasAdapter = new TareasAdapter());
 

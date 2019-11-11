@@ -13,7 +13,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Tarea.class, Prioridad.class}, views = {TareaDetalle.class}, version = 1)
+@Database(entities = {Tarea.class, Prioridad.class}, views = {TareaDetalle.class}, exportSchema = false, version = 1)
 public abstract class TareasDatabase extends RoomDatabase {
 
     private static TareasDatabase INSTANCE;
